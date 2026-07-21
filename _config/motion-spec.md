@@ -3,13 +3,18 @@
      Implementation choices belong to stage 04. -->
 
 ## In-scope behaviors
+<!-- v2 (Patch reference). v1's LOUD-era table (section-synced nav, route
+     transitions, pillars panel) retired — see tag v1-loud-attempt. This
+     table is the complete motion inventory. -->
 
 | Behavior | In/Out | Parameters |
 |---|---|---|
-| Section-synced nav | In | active state when section crosses 50% viewport |
-| Route transitions | In | max duration 400ms; nav persists |
-| Pillars panel (bottom-left) | In | trigger: hover/click only (no auto-cycle) |
-| Background treatment | In | subtle motion/parallax on imagery; static on mobile and reduced-motion |
+| Scroll-triggered reveals | In | element groups reveal once as their section enters view; page fully readable without them |
+| Pivot beat transition | In | the page's single strongest transition moment (philosophy line) |
+| Language switch | In | EN⇄ES without full-reload feel; place in page preserved |
+| Hero video slot poster state | In | designed poster frame until real video exists; never autoplay with sound |
+| CTA emphasis (Book-a-call) | In | subtle hover/attention motion on primary buttons; never looping/pulsing |
+| Floating WhatsApp button | In | one subtle entrance; persistent; no attention-seeking loops |
 
 ## Global motion rules
 
@@ -26,3 +31,5 @@
 Stage 01's output (`stages/01-reference-capture/output/reference-decomposition.md`)
 holds the detailed per-behavior descriptions as edited/approved by the founder.
 Stage 03 translates the combination of that file + this spec into component specs.
+Reference site for v2 behaviors: thepatchsystem.com/ai (see stage 01
+references/thepatchsystem-analysis.md).
