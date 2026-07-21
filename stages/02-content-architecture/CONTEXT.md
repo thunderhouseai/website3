@@ -24,13 +24,21 @@ writes words and structure only. No design decisions, no components, no code.
 5. CHECKPOINT 2: present the pillar blocks only (highest-stakes copy). Wait.
 6. Run the audit. Save both outputs.
 
+## Bilingual (EN/ES) — cascades from brand.md Languages
+
+copy.md contains EN and ES for every string — parallel blocks, same
+structure. Spanish written natively in the brand voice (neutral Latin
+American Spanish; tú/usted ruled at checkpoint 1) — never
+translated-sounding. Both languages audited against the banned-phrase list.
+
 ## Audit
 
 - [ ] Every pillar block: name + exactly three keywords + one paragraph ≤ 60 words
-- [ ] Zero phrases from brand.md "Never sounds like" list
+- [ ] Zero phrases from brand.md "Never sounds like" list — checked in BOTH languages
 - [ ] Every section in the sitemap has copy; every copy block maps to a section
+- [ ] Every EN block has an ES counterpart with identical structure
 - [ ] Copy makes no promises about motion/visuals (that's stages 01/03)
-- [ ] Each page has a title tag + meta description
+- [ ] Each page has a title tag + meta description — in both languages
 
 ## Outputs
 

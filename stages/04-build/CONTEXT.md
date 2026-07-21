@@ -24,9 +24,15 @@ zero freedom on WHAT/WHEN — the specs and copy are contracts.
    fit, flag it as a stage 02/03 issue in output/build-notes.md.
 5. Run the audit. Fix failures. Save.
 
+## Bilingual (EN/ES) — cascades from brand.md Languages
+
+/es route mirror of every page, correct lang attributes and hreflang,
+language choice persisted.
+
 ## Audit
 
 - [ ] `npm run build` completes with zero errors
+- [ ] Every route has an /es mirror; lang + hreflang correct; language choice persists
 - [ ] Grep check: no hex colors, px font-sizes, or ms durations outside tokens.ts
 - [ ] Every spec'd component exists; every behavior contract line is satisfied
 - [ ] All copy matches copy.md verbatim (spot-check every headline + pillar block)

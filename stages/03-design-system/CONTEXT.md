@@ -27,9 +27,16 @@ Specs define WHAT and WHEN. The build stage owns HOW.
    spacing, durations, easings, breakpoints — typed, exported constants).
 5. Run the audit. Save outputs.
 
+## Bilingual (EN/ES) — cascades from brand.md Languages
+
+Spec a LanguageSwitcher in the shell (EN/ES, persists across navigation).
+All components consume strings from the content layer — no hardcoded text
+in any spec's content slots.
+
 ## Audit
 
 - [ ] Every sitemap section is covered by exactly one component spec
+- [ ] LanguageSwitcher spec exists; every content slot sources from the content layer (both languages)
 - [ ] No spec contains implementation terms (library names, CSS properties, hooks)
 - [ ] Every duration/color/size in specs references a token name, never a literal
 - [ ] tokens.ts values match design-tokens.md one-to-one

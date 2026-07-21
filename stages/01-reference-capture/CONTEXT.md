@@ -8,8 +8,13 @@ no design tokens.
 
 | Source | File/Location | Section/Scope | Why |
 |---|---|---|---|
-| Reference analysis | references/loudsrl-analysis.md | Full file | Observed loudsrl mechanics |
+| Reference analysis | references/thepatchsystem-analysis.md | Full file | Observed thepatchsystem.com/ai mechanics |
+| Site job | ../../_config/site-job.md | Full file | What every behavior must serve |
+| Art direction | ../../_config/art-direction.md | Full file | Aesthetic scope + out-of-scope items |
 | Motion scope | ../../_config/motion-spec.md | In-scope behaviors table | Which behaviors are in/out |
+
+(references/loudsrl-analysis.md is v1-era material, retained for history —
+not an input to this run.)
 
 ## Process
 
