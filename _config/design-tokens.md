@@ -24,8 +24,35 @@ Verified — sampled from the logo source file (`shared/assets/logo/thunderhouse
 |---|---|
 | font-display | Montserrat |
 | font-body | Poppins |
-| scale | 1.25 modular, base 16px (default, confirm) |
+| scale | 1.333 modular, base 16px (bumped from 1.25 in composition revision) |
 | headline-weight | 700 (Bold, default for Montserrat display) |
+
+## Display type (viewport-relative)
+
+| Token | Value | Use |
+|---|---|---|
+| display-hero | clamp(2.75rem, 6vw + 1.5rem, 8rem) | hero headline — dominant element per view |
+| display-pillar-title | clamp(2.5rem, 5.5vw + 1.5rem, 7rem) | pillar titles — hero-adjacent scale |
+| display-statement | clamp(1.75rem, 3vw + 1rem, 4.25rem) | full-viewport statements (teaser sentence, CTA heading) — between body and hero |
+
+## Placeholder background treatment
+
+Until real photography exists, every full-viewport section/pillar background
+is: bg-primary base + ONE low-opacity amber radial glow anchored to an edge
+or corner. Pillars differ by glow position/size only, never hue. Follows the
+gradient rule in `art-direction.md`: never blend amber into navy across a
+full field (produces olive) — glows are contained.
+
+| Token | Value | Use |
+|---|---|---|
+| glow-color | #FEA204 (accent) | the one glow per view |
+| glow-opacity | 0.15 | keeps the glow a glow, not a field |
+
+## Motion additions (mirrored from tokens.ts)
+
+| Token | Value |
+|---|---|
+| duration-background-drift | 20000ms — Behavior 4 slow scale drift |
 
 ## Spacing & layout
 

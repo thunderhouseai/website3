@@ -1,0 +1,32 @@
+.manifesto {
+  display: flex;
+  justify-content: center;
+  min-height: calc(100vh - var(--nav-height));
+  padding: calc(var(--space-unit) * 8) var(--gutter);
+  background: var(--color-bg-inverse);
+  color: var(--color-text-on-light);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  gap: calc(var(--space-unit) * 3);
+  max-width: 70ch;
+}
+
+.button {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 calc(var(--space-unit) * 3);
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+  border-radius: calc(var(--space-unit) / 2);
+  transition: background var(--duration-fast) var(--easing-micro);
+}
+
+.button:hover {
+  background: var(--color-accent-hover);
+}

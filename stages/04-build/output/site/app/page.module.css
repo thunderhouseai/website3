@@ -1,0 +1,18 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Full-bleed act: the PillarBlock fills the section edge to edge; only the
+   intro keeps gutter padding. */
+.pillars {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.pillarsIntro {
+  max-width: 55ch;
+  color: var(--color-text-muted);
+  padding: calc(var(--space-unit) * 6) var(--gutter) calc(var(--space-unit) * 3);
+}

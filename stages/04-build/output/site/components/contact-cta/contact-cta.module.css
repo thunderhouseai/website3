@@ -1,0 +1,44 @@
+/* Composed per art-direction.md: heading at display scale, content anchored
+   lower-left third; the button stays sized to its label (inline-flex),
+   never full-width. */
+.cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: calc(var(--space-unit) * 8) var(--gutter) calc(var(--space-unit) * 14);
+}
+
+.headline {
+  font-size: var(--fs-display-statement);
+  max-width: 24ch;
+  margin-bottom: calc(var(--space-unit) * 2);
+}
+
+.body {
+  max-width: 60ch;
+}
+
+.body {
+  color: var(--color-text-muted);
+  margin-bottom: calc(var(--space-unit) * 3);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 calc(var(--space-unit) * 3);
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+  border-radius: calc(var(--space-unit) / 2);
+  transition: background var(--duration-fast) var(--easing-micro);
+}
+
+.button:hover {
+  background: var(--color-accent-hover);
+}

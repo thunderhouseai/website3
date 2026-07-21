@@ -1,0 +1,68 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--gutter);
+  background: var(--color-bg-primary);
+}
+
+.wordmark {
+  font-family: var(--font-display-family), sans-serif;
+  font-weight: var(--font-weight-headline);
+  font-size: var(--fs-h3);
+  color: var(--color-text-primary);
+}
+
+.menuButton {
+  display: none;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.list {
+  display: flex;
+  gap: calc(var(--space-unit) * 4);
+  list-style: none;
+}
+
+.link,
+.active {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: var(--fs-body);
+  color: var(--color-text-primary);
+  transition: color var(--duration-fast) var(--easing-micro);
+}
+
+.active {
+  color: var(--color-accent);
+}
+
+@media (max-width: 767px) {
+  .menuButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--color-bg-primary);
+    display: none;
+    padding: var(--space-unit) var(--gutter);
+  }
+
+  .list[data-open='true'] {
+    display: flex;
+  }
+}

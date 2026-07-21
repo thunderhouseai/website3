@@ -11,6 +11,7 @@ zero freedom on WHAT/WHEN — the specs and copy are contracts.
 | Copy | ../02-content-architecture/output/copy.md | Full file | All site text, verbatim |
 | Sitemap | ../02-content-architecture/output/sitemap.md | Full file | Routes |
 | Tokens | ../../shared/constants/tokens.ts | Full file | Only source of design values |
+| Art direction | ../../_config/art-direction.md | Full file | Visual tiebreakers + gradient rule |
 | Conventions | references/build-conventions.md | Full file | Stack + structure rules |
 
 ## Process
