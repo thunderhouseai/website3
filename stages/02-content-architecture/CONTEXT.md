@@ -33,7 +33,7 @@ translated-sounding. Both languages audited against the banned-phrase list.
 
 ## Audit
 
-- [ ] Every pillar block: name + exactly three keywords + one paragraph ≤ 60 words
+- [ ] Every module block: name + exactly three keywords + one paragraph ≤ 60 words — enforced in BOTH languages
 - [ ] Zero phrases from brand.md "Never sounds like" list — checked in BOTH languages
 - [ ] Every section in the sitemap has copy; every copy block maps to a section
 - [ ] Every EN block has an ES counterpart with identical structure
