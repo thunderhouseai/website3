@@ -9,8 +9,9 @@
 
 | Behavior | In/Out | Parameters |
 |---|---|---|
-| Scroll-triggered reveals | In | element groups reveal once as their section enters view; page fully readable without them |
-| Pivot beat transition | In | the page's single strongest transition moment (philosophy line) |
+| Scroll-linked choreography | In | sticky holds + presentation driven by scroll progress on the narrative acts (see per-section contracts in component-specs.md); the reference's defining mechanic |
+| Scroll-triggered reveals | In | simple reveal-once for non-choreographed acts (founder proof, final CTA, contact); page fully readable without them |
+| Pivot beat | In | the page's single strongest moment; MAY hold briefly at full emphasis, then releases — never traps scroll |
 | Language switch | In | EN⇄ES without full-reload feel; place in page preserved |
 | Hero video slot poster state | In | designed poster frame until real video exists; never autoplay with sound |
 | CTA emphasis (Book-a-call) | In | subtle hover/attention motion on primary buttons; never looping/pulsing |
@@ -20,9 +21,13 @@
 
 - Timing tokens (duration-fast, duration-page, easing) live in design-tokens /
   tokens.ts. No literal ms values in components.
-- Motion must degrade gracefully: honor `prefers-reduced-motion` — transitions
-  collapse to opacity fades, background motion pauses.
-- Nothing animates on scroll-jack. Native scroll is never hijacked.
+- BANNED: scroll-jacking — overriding native scroll speed, direction, or
+  wheel behavior.
+- ALLOWED and REQUIRED: scroll-linked choreography — sticky/pinned
+  positioning and animations driven by scroll progress, with native scroll
+  fully intact.
+- Reduced-motion collapses all choreography to simple fades with normal
+  document flow.
 - Every animated element has a defined resting state; the site is fully readable
   with JavaScript disabled or animations off.
 

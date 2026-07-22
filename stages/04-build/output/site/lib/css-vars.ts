@@ -4,6 +4,7 @@ import {
   displayScale,
   motion,
   placeholderBackground,
+  scroll,
   spacing,
   typography,
 } from './tokens';
@@ -66,6 +67,14 @@ export function buildCssVariables(): Record<string, string> {
     '--duration-pivot': `${motion.durationPivot}ms`,
     '--easing-standard': motion.easingStandard,
     '--easing-micro': motion.easingMicro,
+
+    // Scroll-choreography track heights (viewport-height distance each
+    // sticky act holds). --scroll-mobile-scale shortens them in the mobile
+    // media query via calc(var(--track) * var(--scroll-mobile-scale)).
+    '--scroll-module-hold': `${scroll.moduleHoldVh}vh`,
+    '--scroll-sequence-hold': `${scroll.sequenceHoldVh}vh`,
+    '--scroll-pivot-hold': `${scroll.pivotHoldVh}vh`,
+    '--scroll-mobile-scale': String(scroll.mobileHoldScale),
 
     '--breakpoint-mobile': px(breakpoints.mobile),
   };

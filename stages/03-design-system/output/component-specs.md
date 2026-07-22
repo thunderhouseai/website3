@@ -6,6 +6,15 @@ sizing reference (containers/type must fit the longer rendering, no
 per-language size hacks); quality floor per spec-conventions.md (contrast,
 44px tap targets, focus-visible, keyboard operability).
 
+Scroll choreography (round-2 correction, cascades to the contracts below):
+scroll-jacking is banned, but scroll-LINKED choreography — sticky holds and
+presentation driven by scroll progress, native scroll fully intact — is
+required on the narrative acts. Mobile: choreography simplifies but does
+not disappear — sticky holds shorten, sequences remain sequenced. Reduced
+motion: everything collapses to static document flow + simple fades.
+Progress-driven means deterministic by scroll position: any scroll speed,
+input device, or keyboard scrolling (space/arrows) lands the same states.
+
 ## Shell
 
 Purpose: Persistent chrome — Nav, WhatsAppButton, Footer — around the
@@ -109,8 +118,9 @@ Content slots: none (wraps consumers).
 
 Tokens used: durationReveal, easingStandard
 
-Out of scope: the pivot's stronger moment (PivotBeat); what each act
-reveals (per-act specs).
+Out of scope: scroll-linked choreography (each choreographed act owns its
+own progress contract — this is only the simple reveal-once used by
+non-choreographed acts); what each act reveals (per-act specs).
 
 ## Hero
 
@@ -120,10 +130,13 @@ Appears: / and /es, first act.
 Composition: full viewport; headline at hero display scale is the dominant
 element; CTA visible without scrolling; bold energy, premium restraint.
 
+Scroll choreography: content may ease/recede as the visitor scrolls away —
+a depth cue tied to scroll progress; fully present again on scroll back.
+
 States:
 - default: headline, subhead, video poster, CTA all visible.
 - mobile: stacked; poster sized down; CTA still above the fold.
-- reduced-motion: content static; reveal collapses.
+- reduced-motion: static flow, no recede; reveal collapses to a fade.
 - edge: none — static content once copy.md is final.
 
 Behavior contract:
@@ -173,15 +186,20 @@ Purpose: Names the owner's reality — kicker plus four beats landing in
 sequence, one small mark per beat.
 Appears: / and /es, second act.
 
+Scroll choreography: the act holds (sticky) while the four beats reveal
+tied to scroll progress — arriving mid-section shows the sequence
+mid-story, not everything at once; the act releases after the last beat.
+
 States:
-- default: kicker + all four beats, revealed in order.
-- mobile: beats stack full-width, same order.
-- reduced-motion: all beats visible immediately as a plain list.
+- default: kicker + beats, presented by scroll progress.
+- mobile: shorter hold, same sequence, beats stack full-width.
+- reduced-motion: static flow — all beats visible as a plain list.
 - edge: scripting unavailable — reads as a complete list.
 
 Behavior contract:
-- WHEN the act enters view, THEN beats reveal in sequence (Behavior 2 via
-  Behavior 1).
+- WHEN the visitor scrolls through the act, THEN beats appear in order as
+  a function of scroll position — deterministic at any speed or input
+  (Behavior 2, choreography contract).
 - WHEN reduced motion is active, THEN no sequencing — everything visible.
 
 Content slots:
@@ -197,16 +215,22 @@ Purpose: The hard turn — the philosophy line, verbatim, held alone; the
 page's single strongest reveal.
 Appears: / and /es, between PainMirror and ModulesSection.
 
+Scroll choreography: the line builds to full emphasis with scroll
+progress, MAY hold briefly at full emphasis (the punch moment the
+reference earns), then releases back into flow — native scroll intact,
+never trapped (round-2 correction supersedes checkpoint ruling 2's
+no-pinning reading).
+
 States:
 - default: the line isolated and dominant; nothing else competes.
-- mobile: same isolation; never crowded by neighboring acts.
-- reduced-motion: static, still isolated and dominant.
+- mobile: same isolation, shorter hold.
+- reduced-motion: static flow, still isolated and dominant.
 - edge: scripting unavailable — the line is fully readable.
 
 Behavior contract:
-- WHEN the act enters view, THEN the line reveals as the page's most
-  emphatic moment within durationPivot — native scroll untouched, no
-  pinning (Behavior 3, checkpoint ruling 2).
+- WHEN the visitor scrolls into the act, THEN the line builds to and
+  holds full emphasis as a function of scroll position, then releases —
+  scroll speed/direction/wheel never overridden (Behavior 3).
 - WHEN rendered, THEN the text matches copy.md's protected rendering for
   the active language character-for-character.
 
@@ -226,15 +250,21 @@ Purpose: Orders the five ModuleBlocks 01–05 under the section header —
 the finite-system walkthrough.
 Appears: / and /es.
 
+Scroll choreography (the reference experience): each numbered module holds
+(sticks) while its content presents, then releases; modules stack/hand off
+so scrolling walks you through 01→05 as a guided sequence, the visual slot
+holding steady while text advances.
+
 States:
-- default: header + five blocks in fixed order.
-- mobile: blocks stack, numbering intact.
-- reduced-motion: static, in order.
+- default: header + five blocks in fixed, choreographed order.
+- mobile: shorter holds, same guided sequence, numbering intact.
+- reduced-motion: static document flow, in order.
 - edge: every module reachable by scroll alone — none behind interaction.
 
 Behavior contract:
-- WHEN the visitor scrolls, THEN modules appear 01 → 05, each revealing on
-  its own entry (Behavior 4 via Behavior 1).
+- WHEN the visitor scrolls, THEN each module holds while its content
+  presents by scroll progress, then hands off to the next — 01 → 05 as
+  one guided sequence (Behavior 4, choreography contract).
 
 Content slots:
 - section header: copy.md Home / Modules (content layer, EN/ES).
@@ -307,15 +337,18 @@ Purpose: The engagement model as six plain steps; step rhythm echoes the
 numbered modules.
 Appears: / and /es.
 
+Scroll choreography: the act holds while steps present sequentially with
+scroll progress, then releases.
+
 States:
-- default: header + six steps in order.
-- mobile: steps stack in order.
-- reduced-motion: static.
+- default: header + six steps, presented by scroll progress.
+- mobile: shorter hold, same sequence.
+- reduced-motion: static flow — all steps visible.
 - edge: none.
 
 Behavior contract:
-- WHEN the act enters view, THEN steps reveal in order (Behavior 6 via
-  Behavior 1).
+- WHEN the visitor scrolls through the act, THEN steps appear in order as
+  a function of scroll position (Behavior 6, choreography contract).
 - WHEN step 4 renders, THEN "no packages, no pressure" is present in the
   active language (Behavior 6).
 

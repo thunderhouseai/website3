@@ -59,6 +59,20 @@ export const motion = {
   easingMicro: 'ease-in-out',
 } as const;
 
+// Scroll-linked choreography (motion-spec v2 round-2). These are the SCROLL
+// DISTANCE each choreographed act spans, in viewport heights — how long a
+// sticky act "holds" while its content presents before releasing. Longer =
+// slower, more deliberate walkthrough. Native scroll is never overridden;
+// these only set how much page the sticky track occupies. mobileHoldScale
+// shortens holds on small screens (spec: choreography simplifies, does not
+// disappear).
+export const scroll = {
+  moduleHoldVh: 175,
+  sequenceHoldVh: 230,
+  pivotHoldVh: 150,
+  mobileHoldScale: 0.62,
+} as const;
+
 export const breakpoints = {
   mobile: 768,
 } as const;
@@ -69,4 +83,5 @@ export type DisplayScale = typeof displayScale;
 export type PlaceholderBackground = typeof placeholderBackground;
 export type Spacing = typeof spacing;
 export type Motion = typeof motion;
+export type Scroll = typeof scroll;
 export type Breakpoints = typeof breakpoints;

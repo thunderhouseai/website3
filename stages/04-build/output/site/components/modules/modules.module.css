@@ -1,102 +1,46 @@
 .section {
-  padding: calc(var(--space-unit) * 12) var(--gutter);
+  padding: calc(var(--space-unit) * 12) var(--gutter) 0;
 }
 
 .header {
   margin-bottom: calc(var(--space-unit) * 8);
 }
 
+/* Tracks hand off directly with no gap so each module's sticky covers the
+   previous one (the stack/hand-off walk). */
 .list {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--space-unit) * 10);
-  counter-reset: none;
 }
 
-/* Each block is its own act: number quiet and huge, name dominant,
-   content anchored left, visual slot to the right on wide screens. */
-.block {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  grid-template-areas:
-    'number visual'
-    'name visual'
-    'keywords visual'
-    'paragraph visual';
-  column-gap: calc(var(--space-unit) * 6);
-  padding: calc(var(--space-unit) * 6) calc(var(--space-unit) * 5);
-  border-radius: var(--space-unit);
-  background-color: var(--color-bg-surface);
-}
-
-.blockGlow {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-}
-
-/* Placeholder treatment: glow position/size varies per module, hue never
-   does (design tokens + ModuleBlock spec). */
-.block[data-module='0'] .blockGlow {
-  background-image: radial-gradient(50% 60% at 0% 100%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
-}
-
-.block[data-module='1'] .blockGlow {
-  background-image: radial-gradient(40% 45% at 100% 0%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
-}
-
-.block[data-module='2'] .blockGlow {
-  background-image: radial-gradient(55% 50% at 100% 70%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
-}
-
-.block[data-module='3'] .blockGlow {
-  background-image: radial-gradient(45% 55% at 15% 0%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
-}
-
-.block[data-module='4'] .blockGlow {
-  background-image: radial-gradient(60% 45% at 50% 100%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
-}
-
+/* ---- Shared element typography (both branches) ---- */
 .number {
-  grid-area: number;
   font-family: var(--font-display-family), sans-serif;
   font-weight: var(--font-weight-headline);
   font-size: var(--fs-h1);
   color: var(--color-text-muted);
   letter-spacing: 0.08em;
-  margin-bottom: var(--space-unit);
 }
 
 .name {
-  grid-area: name;
   font-size: var(--fs-display-module-title);
   line-height: 1.05;
   max-width: 14ch;
-  margin-bottom: calc(var(--space-unit) * 2);
 }
 
 .keywords {
-  grid-area: keywords;
   font-size: var(--fs-small);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-accent);
-  margin-bottom: calc(var(--space-unit) * 2);
 }
 
 .paragraph {
-  grid-area: paragraph;
   max-width: 60ch;
   color: var(--color-text-primary);
 }
 
-/* Visual slot: designed palette placeholder — real assets drop in later. */
 .visual {
-  grid-area: visual;
-  align-self: center;
   aspect-ratio: 4 / 3;
   border-radius: var(--space-unit);
   background-color: var(--color-bg-primary);
@@ -119,6 +63,106 @@
   border-radius: calc(var(--space-unit) / 2);
 }
 
+.blockGlow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.block[data-module='0'] .blockGlow,
+.track[data-module='0'] .blockGlow {
+  background-image: radial-gradient(50% 60% at 0% 100%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
+}
+
+.block[data-module='1'] .blockGlow,
+.track[data-module='1'] .blockGlow {
+  background-image: radial-gradient(40% 45% at 100% 0%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
+}
+
+.block[data-module='2'] .blockGlow,
+.track[data-module='2'] .blockGlow {
+  background-image: radial-gradient(55% 50% at 100% 70%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
+}
+
+.block[data-module='3'] .blockGlow,
+.track[data-module='3'] .blockGlow {
+  background-image: radial-gradient(45% 55% at 15% 0%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
+}
+
+.block[data-module='4'] .blockGlow,
+.track[data-module='4'] .blockGlow {
+  background-image: radial-gradient(60% 45% at 50% 100%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
+}
+
+/* ---- Static branch (SSR / JS-off / reduced-motion): full-height card ---- */
+.block {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  grid-template-areas:
+    'number visual'
+    'name visual'
+    'keywords visual'
+    'paragraph visual';
+  column-gap: calc(var(--space-unit) * 6);
+  row-gap: calc(var(--space-unit) * 2);
+  align-content: center;
+  min-height: 100vh;
+  padding: calc(var(--space-unit) * 8) var(--gutter);
+  background-color: var(--color-bg-surface);
+}
+
+.block .number {
+  grid-area: number;
+}
+.block .name {
+  grid-area: name;
+}
+.block .keywords {
+  grid-area: keywords;
+}
+.block .paragraph {
+  grid-area: paragraph;
+}
+.block .visual {
+  grid-area: visual;
+  align-self: center;
+}
+
+/* ---- Choreographed branch: sticky hold-and-release ---- */
+.track {
+  position: relative;
+  height: var(--scroll-module-hold);
+}
+
+.sticky {
+  position: sticky;
+  top: var(--nav-height);
+  height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: calc(var(--space-unit) * 6) var(--gutter);
+  background-color: var(--color-bg-surface);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  column-gap: calc(var(--space-unit) * 6);
+  align-items: center;
+  width: 100%;
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-unit) * 2);
+}
+
 @media (max-width: 767px) {
   .block {
     grid-template-columns: minmax(0, 1fr);
@@ -128,10 +172,14 @@
       'keywords'
       'paragraph'
       'visual';
-    row-gap: var(--space-unit);
   }
 
-  .visual {
-    margin-top: calc(var(--space-unit) * 3);
+  .track {
+    height: calc(var(--scroll-module-hold) * var(--scroll-mobile-scale));
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: calc(var(--space-unit) * 3);
   }
 }

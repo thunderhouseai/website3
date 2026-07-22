@@ -1,4 +1,4 @@
-/* The line held alone: full viewport, nothing else competes (spec). */
+/* Static branch (SSR / JS-off / reduced-motion): the line held alone. */
 .pivot {
   position: relative;
   isolation: isolate;
@@ -7,6 +7,23 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  padding: calc(var(--space-unit) * 10) var(--gutter);
+}
+
+/* Choreographed branch: sticky hold while the line builds, holds, releases. */
+.track {
+  position: relative;
+  height: var(--scroll-pivot-hold);
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   padding: calc(var(--space-unit) * 10) var(--gutter);
 }
 
@@ -29,5 +46,10 @@
   font-size: var(--fs-display-statement);
   line-height: 1.25;
   text-align: center;
-  border-left: none;
+}
+
+@media (max-width: 767px) {
+  .track {
+    height: calc(var(--scroll-pivot-hold) * var(--scroll-mobile-scale));
+  }
 }

@@ -65,6 +65,19 @@ full field (produces olive) — glows are contained.
 Retired with the v1 LOUD behaviors (tag v1-loud-attempt):
 duration-page, duration-page-reduced, duration-background-drift.
 
+## Scroll choreography (mirrored from tokens.ts, v2 round-2)
+
+Scroll DISTANCE each choreographed act holds, in viewport heights — how
+much page a sticky act occupies while its content presents. Native scroll
+is never overridden; these only size the sticky track.
+
+| Token | Value |
+|---|---|
+| module-hold | 175vh — each numbered module's sticky walkthrough |
+| sequence-hold | 230vh — pain-mirror / how-it-works multi-beat sequences |
+| pivot-hold | 150vh — the pivot beat's build-hold-release |
+| mobile-hold-scale | 0.62 — multiplier shortening holds on small screens |
+
 ## Spacing & layout
 
 | Token | Value |

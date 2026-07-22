@@ -1,5 +1,64 @@
 # Build notes — site-production stage 04 v2 (Patch reference)
 
+## Revision — scroll choreography (round 2)
+
+The reference's defining mechanic — scroll-linked choreography — was missing
+from the first v2 build (it had only reveal-once fades). Motion-spec's global
+rule was corrected first (scroll-JACKING banned: overriding native scroll
+speed/direction/wheel; scroll-LINKED choreography required: sticky holds +
+scroll-progress animation with native scroll intact), stage 03 gained a
+per-section choreography contract, and this stage rebuilt the page's
+structural scroll behavior.
+
+**Architecture — progressive enhancement over a readable static base.**
+Every choreographed act (Hero, PainMirror, PivotBeat, ModulesSection,
+HowItWorks) renders a fully-readable, normal-flow static version on the
+server. `useChoreographyActive()` (mounted && !reduced-motion, via
+`useSyncExternalStore` so hydration matches the server's static render) is
+the single gate; only when true does an act switch to its sticky,
+scroll-progress-driven form. Verified: SSR HTML on all four routes contains
+the STATIC branch markup (`.mirror`/`.block`/`.how`/`.pivot`, never the
+`.track` sticky classes) with complete content in both languages — so the
+site is fully readable with JavaScript disabled and under reduced motion,
+and there is no hydration mismatch (server and hydration both render
+static; the swap to choreography is a post-commit update). The swap is
+visually seamless because every choreographed act sits below the fold —
+it flips before the visitor scrolls it into view. The hero is the one
+above-the-fold act; it recedes from opacity 1, so progress 0 already
+equals its static state (no jump).
+
+**Per-section behavior built to the stage 03 contracts:**
+- ModulesSection — each module is a sticky track (`--scroll-module-hold`);
+  as you scroll it holds while its text advances (number→name→keywords→
+  paragraph by scroll progress) and the visual slot holds steady, then it
+  releases and the next module's opaque sticky covers it: the 01→05 guided
+  stack/hand-off walk.
+- PainMirror / HowItWorks — one sticky track (`--scroll-sequence-hold`);
+  the beats/steps reveal across scroll-progress sub-ranges, so arriving
+  mid-section shows the sequence mid-story.
+- PivotBeat — sticky track (`--scroll-pivot-hold`); the line builds to
+  full emphasis, holds, then releases back into flow. Native scroll never
+  trapped (supersedes the earlier no-pinning reading of ruling 2).
+- Hero — content recedes (opacity/lift/scale) as it scrolls away.
+- Determinism: all presentation is a pure function of scroll position
+  (framer-motion `useScroll` progress + `useTransform`, clamped), so any
+  scroll speed, wheel/trackpad, or keyboard scroll (space/arrows) lands the
+  same states. Mobile shortens the holds via `--scroll-mobile-scale` (spec:
+  simplifies, does not disappear). Reduced motion → the static branch.
+
+**New tokens** (tokens.ts `scroll` group, mirrored to design-tokens.md):
+`moduleHoldVh` 175, `sequenceHoldVh` 230, `pivotHoldVh` 150,
+`mobileHoldScale` 0.62 — the scroll DISTANCE (viewport-heights) each act
+holds. Tunable if any act's pacing feels off; grep audit confirms no bare
+vh literals in components outside the token-driven CSS vars.
+
+**Needs human review specifically** (structural checks can't see it): the
+choreography feel at multiple scroll speeds and with keyboard scrolling
+(space/arrows/Page Down), that the module hand-off reads as a guided walk
+and not a jump, and that ES routes — identical choreography by construction,
+same components with a lang prop — hold the longer Spanish strings inside
+the sticky viewports without overflow.
+
 ## Env vars (documented per build-conventions; nothing baked in)
 
 | Name | Used by | Required? |

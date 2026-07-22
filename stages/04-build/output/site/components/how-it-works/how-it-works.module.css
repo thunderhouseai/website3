@@ -1,5 +1,27 @@
+/* Static branch (SSR / JS-off / reduced-motion). */
 .how {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: calc(var(--space-unit) * 12) var(--gutter);
+}
+
+/* Choreographed branch: sticky hold while steps present by scroll progress. */
+.track {
+  position: relative;
+  height: var(--scroll-sequence-hold);
+}
+
+.sticky {
+  position: sticky;
+  top: var(--nav-height);
+  height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: calc(var(--space-unit) * 6) var(--gutter);
 }
 
 .header {
@@ -31,4 +53,10 @@
 .stepText {
   font-size: var(--fs-h3);
   line-height: 1.4;
+}
+
+@media (max-width: 767px) {
+  .track {
+    height: calc(var(--scroll-sequence-hold) * var(--scroll-mobile-scale));
+  }
 }
