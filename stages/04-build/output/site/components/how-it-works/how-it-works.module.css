@@ -1,0 +1,34 @@
+.how {
+  padding: calc(var(--space-unit) * 12) var(--gutter);
+}
+
+.header {
+  margin-bottom: calc(var(--space-unit) * 6);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-unit) * 4);
+  max-width: 70ch;
+}
+
+.step {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--space-unit) * 3);
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  font-family: var(--font-display-family), sans-serif;
+  font-weight: var(--font-weight-headline);
+  font-size: var(--fs-h3);
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+}
+
+.stepText {
+  font-size: var(--fs-h3);
+  line-height: 1.4;
+}

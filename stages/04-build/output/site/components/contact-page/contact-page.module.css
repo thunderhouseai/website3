@@ -1,0 +1,34 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  max-width: 980px;
+  padding: calc(var(--space-unit) * 8) var(--gutter) calc(var(--space-unit) * 12);
+  margin: 0 auto;
+}
+
+.headline {
+  font-size: var(--fs-display-statement);
+  margin-bottom: calc(var(--space-unit) * 3);
+}
+
+.body {
+  max-width: 60ch;
+  color: var(--color-text-muted);
+  margin-bottom: calc(var(--space-unit) * 5);
+}
+
+.secondary {
+  margin-top: calc(var(--space-unit) * 3);
+}
+
+.secondary a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-accent);
+  transition: color var(--duration-fast) var(--easing-micro);
+}
+
+.secondary a:hover {
+  color: var(--color-accent-hover);
+}

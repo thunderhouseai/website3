@@ -1,0 +1,137 @@
+.section {
+  padding: calc(var(--space-unit) * 12) var(--gutter);
+}
+
+.header {
+  margin-bottom: calc(var(--space-unit) * 8);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-unit) * 10);
+  counter-reset: none;
+}
+
+/* Each block is its own act: number quiet and huge, name dominant,
+   content anchored left, visual slot to the right on wide screens. */
+.block {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  grid-template-areas:
+    'number visual'
+    'name visual'
+    'keywords visual'
+    'paragraph visual';
+  column-gap: calc(var(--space-unit) * 6);
+  padding: calc(var(--space-unit) * 6) calc(var(--space-unit) * 5);
+  border-radius: var(--space-unit);
+  background-color: var(--color-bg-surface);
+}
+
+.blockGlow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Placeholder treatment: glow position/size varies per module, hue never
+   does (design tokens + ModuleBlock spec). */
+.block[data-module='0'] .blockGlow {
+  background-image: radial-gradient(50% 60% at 0% 100%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
+}
+
+.block[data-module='1'] .blockGlow {
+  background-image: radial-gradient(40% 45% at 100% 0%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
+}
+
+.block[data-module='2'] .blockGlow {
+  background-image: radial-gradient(55% 50% at 100% 70%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
+}
+
+.block[data-module='3'] .blockGlow {
+  background-image: radial-gradient(45% 55% at 15% 0%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
+}
+
+.block[data-module='4'] .blockGlow {
+  background-image: radial-gradient(60% 45% at 50% 100%, rgb(var(--glow-rgb) / var(--glow-opacity)), transparent 70%);
+}
+
+.number {
+  grid-area: number;
+  font-family: var(--font-display-family), sans-serif;
+  font-weight: var(--font-weight-headline);
+  font-size: var(--fs-h1);
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-unit);
+}
+
+.name {
+  grid-area: name;
+  font-size: var(--fs-display-module-title);
+  line-height: 1.05;
+  max-width: 14ch;
+  margin-bottom: calc(var(--space-unit) * 2);
+}
+
+.keywords {
+  grid-area: keywords;
+  font-size: var(--fs-small);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: calc(var(--space-unit) * 2);
+}
+
+.paragraph {
+  grid-area: paragraph;
+  max-width: 60ch;
+  color: var(--color-text-primary);
+}
+
+/* Visual slot: designed palette placeholder — real assets drop in later. */
+.visual {
+  grid-area: visual;
+  align-self: center;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--space-unit);
+  background-color: var(--color-bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.visualMark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34%;
+  height: 8%;
+  transform: translate(-50%, -50%) rotate(-8deg) skewX(-24deg);
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-gradient-start),
+    var(--color-accent-gradient-end)
+  );
+  border-radius: calc(var(--space-unit) / 2);
+}
+
+@media (max-width: 767px) {
+  .block {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'number'
+      'name'
+      'keywords'
+      'paragraph'
+      'visual';
+    row-gap: var(--space-unit);
+  }
+
+  .visual {
+    margin-top: calc(var(--space-unit) * 3);
+  }
+}

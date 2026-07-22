@@ -1,0 +1,27 @@
+/* Defined clearance from CTAs and footer (spec): bottom-RIGHT corner —
+   final CTAs and footer links sit left/center, so the two can't collide;
+   the offset keeps it clear of the footer bar at rest. */
+.button {
+  position: fixed;
+  right: calc(var(--space-unit) * 3);
+  bottom: calc(var(--space-unit) * 3);
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+  transition: background var(--duration-fast) var(--easing-micro);
+}
+
+.button:hover {
+  background: var(--color-accent-hover);
+}
+
+.button svg {
+  width: 26px;
+  height: 26px;
+}

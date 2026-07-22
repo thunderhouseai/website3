@@ -1,0 +1,38 @@
+.mirror {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: calc(var(--space-unit) * 10) var(--gutter);
+}
+
+.kicker {
+  font-family: var(--font-display-family), sans-serif;
+  font-weight: var(--font-weight-headline);
+  font-size: var(--fs-h2);
+  margin-bottom: calc(var(--space-unit) * 6);
+}
+
+.beats {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-unit) * 4);
+  max-width: 60ch;
+}
+
+.beat {
+  display: flex;
+  align-items: baseline;
+  gap: calc(var(--space-unit) * 2);
+  font-size: var(--fs-h3);
+  line-height: 1.4;
+}
+
+.mark {
+  flex-shrink: 0;
+  width: calc(var(--space-unit) * 1.5);
+  height: calc(var(--space-unit) * 1.5);
+  border-radius: 50%;
+  background: var(--color-accent);
+  transform: translateY(-2px);
+}

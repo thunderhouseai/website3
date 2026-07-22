@@ -1,0 +1,37 @@
+/* Fixed aspect box: reserves the video's space so the real asset drops in
+   later without layout shift. */
+.slot {
+  width: min(100%, 880px);
+  aspect-ratio: 16 / 9;
+  border-radius: var(--space-unit);
+  overflow: hidden;
+}
+
+/* Designed poster frame from palette tokens: surface base, one contained
+   glow low-left, and a bolt-angled accent slash echoing the logo mark. */
+.poster {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-surface);
+  background-image: radial-gradient(
+    60% 70% at 8% 92%,
+    rgb(var(--glow-rgb) / var(--glow-opacity)),
+    transparent 70%
+  );
+}
+
+.bolt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 38%;
+  height: 6%;
+  transform: translate(-50%, -50%) rotate(-8deg) skewX(-24deg);
+  background: linear-gradient(
+    90deg,
+    var(--color-accent-gradient-start),
+    var(--color-accent-gradient-end)
+  );
+  border-radius: var(--space-unit);
+}

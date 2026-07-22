@@ -1,0 +1,68 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space-unit) * 2);
+}
+
+.labels {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-unit);
+  font-size: var(--fs-small);
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.label,
+.active {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 32px;
+  transition: color var(--duration-fast) var(--easing-micro);
+}
+
+.label:hover {
+  color: var(--color-text-primary);
+}
+
+.active {
+  color: var(--color-accent);
+}
+
+/* Quiet inline offer (spec): renders in the shell region below the nav
+   bar, never covering a CTA; dismissible; static under reduced motion. */
+.offer {
+  position: absolute;
+  top: 100%;
+  right: var(--gutter);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--space-unit) * 1.5);
+  padding: var(--space-unit) calc(var(--space-unit) * 2);
+  background: var(--color-bg-surface);
+  border-radius: 0 0 calc(var(--space-unit) / 2) calc(var(--space-unit) / 2);
+  font-size: var(--fs-small);
+  color: var(--color-text-primary);
+}
+
+.offerLink {
+  color: var(--color-accent);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.offerLink:hover {
+  color: var(--color-accent-hover);
+}
+
+.dismiss {
+  color: var(--color-text-muted);
+  min-height: 44px;
+}
+
+.dismiss:hover {
+  color: var(--color-text-primary);
+}

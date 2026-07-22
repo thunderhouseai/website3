@@ -1,0 +1,57 @@
+.cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: calc(var(--space-unit) * 12) var(--gutter);
+}
+
+/* CTA glow anchored bottom-right — the act's one accent element. */
+.glow {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(
+    60% 45% at 85% 100%,
+    rgb(var(--glow-rgb) / var(--glow-opacity)),
+    transparent 70%
+  );
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.headline {
+  font-size: var(--fs-display-statement);
+  margin-bottom: calc(var(--space-unit) * 3);
+}
+
+.body {
+  max-width: 55ch;
+  color: var(--color-text-muted);
+  font-size: var(--fs-h3);
+  line-height: 1.5;
+  margin-bottom: calc(var(--space-unit) * 5);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 calc(var(--space-unit) * 4);
+  background: var(--color-accent);
+  color: var(--color-bg-primary);
+  border-radius: calc(var(--space-unit) / 2);
+  font-weight: var(--font-weight-headline);
+  transition: background var(--duration-fast) var(--easing-micro);
+}
+
+.button:hover {
+  background: var(--color-accent-hover);
+}
