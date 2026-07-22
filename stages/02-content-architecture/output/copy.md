@@ -250,6 +250,18 @@ un plan concreto con precio.
 
 # Global shell
 
+## Language offer (stage 03 addendum — checkpoint ruling 1b; founder-editable)
+
+Shown in the visitor's SAVED language when it differs from the URL's;
+dismissible; dismissal persisted — never re-offered.
+
+On an EN page, saved preference ES:
+Offer: ¿Prefieres español? · Link: Ver en español · Dismiss: No, gracias
+On an ES page, saved preference EN:
+Offer: Prefer English? · Link: View in English · Dismiss: No, thanks
+
+Switcher labels: EN · ES
+
 ## Nav
 
 Wordmark: ThunderHouse

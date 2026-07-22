@@ -32,8 +32,12 @@ Verified — sampled from the logo source file (`shared/assets/logo/thunderhouse
 | Token | Value | Use |
 |---|---|---|
 | display-hero | clamp(2.75rem, 6vw + 1.5rem, 8rem) | hero headline — dominant element per view |
-| display-pillar-title | clamp(2.5rem, 5.5vw + 1.5rem, 7rem) | pillar titles — hero-adjacent scale |
-| display-statement | clamp(1.75rem, 3vw + 1rem, 4.25rem) | full-viewport statements (teaser sentence, CTA heading) — between body and hero |
+| display-module-title | clamp(2.5rem, 5.5vw + 1.5rem, 7rem) | module titles — hero-adjacent scale (renamed from display-pillar-title, stage 03 v2 ruling) |
+| display-statement | clamp(1.75rem, 3vw + 1rem, 4.25rem) | full-viewport statements (pivot line, CTA headings) — between body and hero |
+
+Sizing rule (stage 03 v2 ruling): Spanish is the sizing reference —
+containers and type must fit the longer ES rendering; no per-language
+size hacks.
 
 ## Placeholder background treatment
 
@@ -48,11 +52,18 @@ full field (produces olive) — glows are contained.
 | glow-color | #FEA204 (accent) | the one glow per view |
 | glow-opacity | 0.15 | keeps the glow a glow, not a field |
 
-## Motion additions (mirrored from tokens.ts)
+## Motion (mirrored from tokens.ts — complete inventory, stage 03 v2)
 
 | Token | Value |
 |---|---|
-| duration-background-drift | 20000ms — Behavior 4 slow scale drift |
+| duration-fast | 150ms — micro-interactions, CTA emphasis |
+| duration-reveal | 600ms — scroll-triggered reveals |
+| duration-pivot | 900ms — the pivot beat's single strongest moment |
+| easing-standard | ease-out — reveals, entrances |
+| easing-micro | ease-in-out — hovers, micro-interactions |
+
+Retired with the v1 LOUD behaviors (tag v1-loud-attempt):
+duration-page, duration-page-reduced, duration-background-drift.
 
 ## Spacing & layout
 

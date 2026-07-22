@@ -33,6 +33,7 @@ language choice persisted.
 
 - [ ] `npm run build` completes with zero errors
 - [ ] Every route has an /es mirror; lang + hreflang correct; language choice persists
+- [ ] ES pages spot-checked for text overflow/truncation, not just EN (ES is the sizing reference)
 - [ ] Grep check: no hex colors, px font-sizes, or ms durations outside tokens.ts
 - [ ] Every spec'd component exists; every behavior contract line is satisfied
 - [ ] All copy matches copy.md verbatim (spot-check every headline + pillar block)
